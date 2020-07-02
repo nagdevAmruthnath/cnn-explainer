@@ -5,6 +5,8 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import rollup_start_dev from './rollup_start_dev';
 import replace from '@rollup/plugin-replace';
+import resolve from 'rollup-plugin-node-resolve';
+import copy from 'rollup-plugin-copy';
 
 const production = !process.env.ROLLUP_WATCH;
 
@@ -26,6 +28,10 @@ export default {
 				css.write('public/assets/css/bundle.css');
 			}
 		}),
+		resolve(),
+		    copy({
+		      targets: [ { src: 'src/index.html', dest: 'dist/' } ],
+		    }),
 
         replace({PUBLIC_URL: production ? '/cnn-explainer' : ''}),
 
