@@ -28,7 +28,6 @@ export default {
 				css.write('public/assets/css/bundle.css');
 			}
 		}),
-		resolve(),
 		    copy({
 		      targets: [ { src: 'src/index.html', dest: 'dist/' } ],
 		    }),
